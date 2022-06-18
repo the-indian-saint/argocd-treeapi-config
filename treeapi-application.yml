@@ -6,7 +6,7 @@ metadata:
   labels:
     app: treeapi
 spec:
-  project: tree-services #TODO: replace it with a proper project name
+  project: default #TODO: replace it with a proper project name
 
   source:
     repoURL: https://github.com/the-indian-saint/argocd-treeapi-config.git
