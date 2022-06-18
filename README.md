@@ -1,0 +1,1 @@
+# argocd-treeapi-config
