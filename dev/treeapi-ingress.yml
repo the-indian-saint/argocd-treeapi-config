@@ -5,9 +5,13 @@ metadata:
   namespace: treeapi
 spec:
   rules:
-    - host: tree-api.com
-      http:
-        paths:
-        - backend:
-            serviceName: treeapi-svc
-            servicePort: 8000
+  - host: tree-api.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: treeapi-svc
+            port:
+              number: 8000
