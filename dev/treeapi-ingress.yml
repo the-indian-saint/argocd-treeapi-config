@@ -8,6 +8,6 @@ spec:
     - host: tree-api.com
       http:
         paths:
-        - backed:
+        - backend:
             serviceName: treeapi-svc
             servicePort: 8000
