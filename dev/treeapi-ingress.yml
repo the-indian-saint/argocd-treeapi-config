@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress   
+metadata: 
+  name: treeapi-ingress
+  namespace: treeapi
+spec:
+  rules:
+    - host: tree-api.com
+      http:
+        paths:
+        - backed:
+            serviceName: treeapi-svc
+            servicePort: 8000
