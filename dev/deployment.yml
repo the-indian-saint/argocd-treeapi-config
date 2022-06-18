@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: treeapi-deployment
+  namespace: treeapi
+  labels:
+    app: treeapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: treeapi
+  template:
+    metadata:
+      labels:
+        app: treeapi
+    spec:
+      containers:
+        - image: theindiansaint/tree-api:latest
+          imagePullPolicy: Always
+          name: treeapi
+          ports:
+            - containerPort: 8000
+              name: treeapi
+          readinessProbe:
+            httpGet:
+              port: 8000
+              path: /health
+            initialDelaySeconds: 15
+          livenessProbe:
+            httpGet:
+              port: 8000
+              path: /health
+            initialDelaySeconds: 15
+            periodSeconds: 15
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "0.5"
+            limits:
+              memory: "1Gi"
+              cpu: "1"

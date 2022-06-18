@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: treeapi-argocd-app
+  namespace: argocd
+  labels:
+    app: treeapi
+spec:
+  project: tree-services #TODO: replace it with a proper project name
+
+  source:
+    repoURL: https://github.com/the-indian-saint/argocd-treeapi-config.git
+    targetRevision: HEAD
+    path: dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: treeapi
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
+      
