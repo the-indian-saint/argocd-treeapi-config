@@ -8,10 +8,10 @@ spec:
   - host: tree-api.com
     http:
       paths:
-      - path: /trees
+      - path: /api/tree
         pathType: Prefix
         backend:
           service:
             name: treeapi-svc
             port:
-              number: 9000
+              number: 8000
